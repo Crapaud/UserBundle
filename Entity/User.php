@@ -5,6 +5,8 @@ namespace Cornichon\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
@@ -12,6 +14,8 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  *
  * @ORM\Table(name="`user`")
  * @ORM\Entity()
+ * @UniqueEntity("username")
+ * @UniqueEntity("email")
  */
 class User implements AdvancedUserInterface
 {
@@ -27,14 +31,14 @@ class User implements AdvancedUserInterface
     /**
      * @var string $username
      *
-     * @ORM\Column(name="username", type="string", length=64)
+     * @ORM\Column(name="username", type="string", length=64, unique=true)
      */
     private $username;
 
     /**
      * @var string $email
      *
-     * @ORM\Column(name="email", type="string", length=96)
+     * @ORM\Column(name="email", type="string", length=96, unique=true)
      */
     private $email;
 
@@ -186,7 +190,7 @@ class User implements AdvancedUserInterface
     /**
      * Add a group into the collection
      *
-     * @param Group $group
+     * @param UserGroup $group
      * @return User
      */
     public function addGroup(UserGroup $group)

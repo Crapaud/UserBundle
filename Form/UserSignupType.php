@@ -15,9 +15,9 @@ class UserSignupType extends AbstractType
             ->add('email', 'email')
             ->add('password', 'repeated', array(
                 'type'            => 'password',
-                'first_options'   => array('label' => 'Password'),
-                'second_options'  => array('label' => 'Repeat Password'),
-                'invalid_message' => "The passwords don't match!"
+                'first_options'   => array('label' => 'password'),
+                'second_options'  => array('label' => 'confirm.password'),
+                'invalid_message' => 'password.not.match'
             ))
         ;
     }

@@ -29,24 +29,4 @@ class SecurityController extends Controller
             'error'         => $error,
         ));
     }
-
-    public function signupAction()
-    {
-        $request = $this->getRequest();
-
-        $user = new User();
-
-        $form = $this->createForm(new UserSignupType(), $user);
-
-        if ($request->getMethod() === 'POST') {
-            $form->bind($request);
-            if ($form->isValid() === true) {
-
-            }
-        }
-
-        return $this->render('CornichonUserBundle:Security:signup.html.twig', array(
-            'form' => $form->createView()
-        ));
-    }
 }

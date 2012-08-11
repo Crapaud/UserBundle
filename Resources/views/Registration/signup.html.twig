@@ -1,4 +1,6 @@
 <form action="{{ path("CornichonUserBundle_signup") }}" method="post" {{ form_enctype(form) }}>
+  {{ form_errors(form) }}
+
   {{ form_widget(form) }}
-  <button>Sign up</button>
+  <button>{% trans %}user.signup{% endtrans %}</button>
 </form>

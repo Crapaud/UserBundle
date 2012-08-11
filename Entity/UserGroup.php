@@ -4,7 +4,10 @@ namespace Cornichon\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\Role\RoleInterface;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -12,6 +15,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="`user_group`")
  * @ORM\Entity()
+ * @UniqueEntity("name")
+ * @UniqueEntity("role")
  */
 class UserGroup implements RoleInterface
 {
@@ -27,14 +32,14 @@ class UserGroup implements RoleInterface
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", length=30)
+     * @ORM\Column(name="name", type="string", length=30, unique=true)
      */
     private $name;
 
     /**
      * @var string $role
      *
-     * @ORM\Column(name="role", type="string", length=30)
+     * @ORM\Column(name="role", type="string", length=30, unique=true)
      */
     private $role;
 
@@ -62,7 +67,7 @@ class UserGroup implements RoleInterface
      * Set name
      *
      * @param string $name
-     * @return rGroup
+     * @return UserGroup
      */
     public function setName($name)
     {
@@ -85,7 +90,7 @@ class UserGroup implements RoleInterface
      * Set role
      *
      * @param string $role
-     * @return rGroup
+     * @return UserGroup
      */
     public function setRole($role)
     {
@@ -108,7 +113,7 @@ class UserGroup implements RoleInterface
      * Add a user into the collection
      *
      * @param User $user
-     * @return Group
+     * @return UserGroup
      */
     public function addUser(User $user)
     {

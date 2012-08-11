@@ -6,7 +6,7 @@ CornichonUserBundle_login:
     defaults:  { _controller: CornichonUserBundle:Security:login }
 CornichonUserBundle_signup:
     pattern:   /signup/
-    defaults:  { _controller: CornichonUserBundle:Security:signup }
+    defaults:  { _controller: CornichonUserBundle:Registration:signup }
 CornichonUserBundle_login_check:
     pattern:   /login-check/
 CornichonUserBundle_logout:
