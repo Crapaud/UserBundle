@@ -1,3 +1,13 @@
 CornichonUserBundle_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: CornichonUserBundle:Default:index }
+CornichonUserBundle_login:
+    pattern:   /login/
+    defaults:  { _controller: CornichonUserBundle:Security:login }
+CornichonUserBundle_signup:
+    pattern:   /signup/
+    defaults:  { _controller: CornichonUserBundle:Security:signup }
+CornichonUserBundle_login_check:
+    pattern:   /login-check/
+CornichonUserBundle_logout:
+    pattern:   /logout/
